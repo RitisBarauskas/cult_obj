@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from main.models import (Category, CultureObject, District, StatusObject,
-                         TypeObject, AdmArea)
+from main.models import (AdmArea, Category, CultureObject, District,
+                         StatusObject, TypeObject)
 
 
 @admin.register(CultureObject)

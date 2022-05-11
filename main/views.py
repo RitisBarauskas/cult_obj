@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import SignUpForm, NewCultureObjectForm
+from .forms import NewCultureObjectForm, SignUpForm
 from .models import CultureObject
 
 
