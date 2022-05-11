@@ -31,11 +31,24 @@ def search_objects(request):
         )
 
     objects = CultureObject.objects.filter(query_filters).distinct()
+    if not objects.exists():
+        return render(
+            request,
+            'objects/search_objects.html',
+            {'not_found': True},
+        )
+
+    display_obj = objects.count() // 15
+    if display_obj < 10:
+        display_obj = 10
+    paginator = Paginator(objects, display_obj)
+    page_number = request.GET.get("page")
+    page = paginator.get_page(page_number)
 
     return render(
         request,
         'objects/search_objects.html',
-        {'Objects': objects},
+        {"page": page, "paginator": paginator},
     )
 
 

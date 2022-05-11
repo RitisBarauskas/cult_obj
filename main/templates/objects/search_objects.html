@@ -4,6 +4,10 @@
 	<main>
 		{% include "../includes/find_box.html" %}
 
+        {% if not_found %}
+            <h2 class="info">По вашему запросу ничего не найдено</h2>
+        {% else %}
+
 		<ul class="object_ul">
   		{% for object in page %}
   		  <li class="object_li">
@@ -43,6 +47,7 @@
   		{% endfor %}
         {% include '../includes/paginator.html' with item=page paginator=paginator %}
 		</ul>
+        {% endif %}
 
 	</main>
 {% endblock %}

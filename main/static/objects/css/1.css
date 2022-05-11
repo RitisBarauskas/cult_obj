@@ -103,3 +103,8 @@
 .page-link {
     margin: 0;
 }
+
+.info {
+    margin: auto;
+    max-width: 800px;
+}
