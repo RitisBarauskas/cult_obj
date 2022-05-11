@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import SignUpForm, NewCultureObjectForm
@@ -10,14 +11,31 @@ def index(request):
     """
     Метод отображения главной страницы
     """
-    return render(request, 'objects/index.html' )
+    return render(request, 'objects/index.html')
 
 
 def search_objects(request):
     """
     Метод отображения формы поиска.
     """
-    return render(request, 'objects/index.html' )
+    search_query = request.GET.get('q').split()
+    if not search_query:
+        return render(request, 'objects/index.html')
+
+    query_filters = Q()
+    for word in search_query:
+        query_filters |= (
+                Q(name__icontains=word) |
+                Q(ensemble_name_on_doc__icontains=word)
+        )
+
+    objects = CultureObject.objects.filter(query_filters).distinct()
+
+    return render(
+        request,
+        'objects/search_objects.html',
+        {'Objects': objects},
+    )
 
 
 @login_required
@@ -47,8 +65,13 @@ def show(request):
     """
     Показывает все объекты культурного наследия.
     """
-    culture = CultureObject.objects.all()
-    return render(request,"search_objects.html",{'Objects':culture})
+    objects = CultureObject.objects.all()[:10]
+
+    return render(
+        request,
+        'objects/search_objects.html',
+        {'Objects': objects},
+    )
 
 
 def rg(request):
@@ -67,8 +90,3 @@ def rg(request):
             return redirect('index')
 
     return render(request, 'registration/rg.html', {'form': form})
-
-
-
-
-
