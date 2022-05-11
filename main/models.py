@@ -128,12 +128,14 @@ class CultureObject(models.Model):
         null=True,
     )
     long_position = models.DecimalField(
-        max_digits=8,
-        decimal_places=3,
+        max_digits=15,
+        decimal_places=13,
+        null=True,
     )
     lat_position = models.DecimalField(
-        max_digits=8,
-        decimal_places=3,
+        max_digits=15,
+        decimal_places=13,
+        null=True,
     )
 
     def __str__(self):
