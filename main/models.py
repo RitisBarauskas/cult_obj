@@ -94,12 +94,14 @@ class CultureObject(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
+        verbose_name='Административный округ',
     )
     district = models.ForeignKey(
         District,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
+        verbose_name='Район Москвы',
     )
     location = models.CharField(
         'Локация',
@@ -114,28 +116,33 @@ class CultureObject(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
+        verbose_name='Статус объекта',
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
+        verbose_name='Категория объекта',
     )
     type = models.ForeignKey(
         TypeObject,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
+        verbose_name='Тип объекта',
     )
     long_position = models.DecimalField(
         max_digits=15,
         decimal_places=13,
         null=True,
+        verbose_name='Долгота',
     )
     lat_position = models.DecimalField(
         max_digits=15,
         decimal_places=13,
         null=True,
+        verbose_name='Широта',
     )
 
     def __str__(self):
