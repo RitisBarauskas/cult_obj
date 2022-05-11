@@ -7,7 +7,7 @@
         {% if not_found %}
             <h2 class="info">По вашему запросу ничего не найдено</h2>
         {% else %}
-
+            <h4 class="info">По вашему запросу найдено записей: {{ paginator.count }}</h4>
 		<ul class="object_ul">
   		{% for object in page %}
   		  <li class="object_li">
