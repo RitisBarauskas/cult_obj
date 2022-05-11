@@ -1,5 +1,7 @@
 # CultObj
 
+Project started: http://127.0.0.1:8008
+
 ## Install
 #### 0. Create .env
 
