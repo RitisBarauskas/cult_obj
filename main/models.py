@@ -81,13 +81,11 @@ class CultureObject(models.Model):
     Объекты культурного наследия.
     """
 
-    name = models.CharField(
+    name = models.TextField(
         'Название объекта',
-        max_length=255,
     )
-    ensemble_name_on_doc = models.CharField(
+    ensemble_name_on_doc = models.TextField(
         'Название объекта в документах',
-        max_length=255,
     )
     adm_area = models.ForeignKey(
         AdmArea,
@@ -103,13 +101,11 @@ class CultureObject(models.Model):
         null=True,
         verbose_name='Район Москвы',
     )
-    location = models.CharField(
+    location = models.TextField(
         'Локация',
-        max_length=255,
     )
-    addresses = models.CharField(
+    addresses = models.TextField(
         'Адрес',
-        max_length=255,
     )
     status = models.ForeignKey(
         StatusObject,
