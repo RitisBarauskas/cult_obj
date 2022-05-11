@@ -49,7 +49,7 @@ class StatusObject(models.Model):
         verbose_name_plural = 'Категории объектов культурного наследия'
 
 
-class CultureObjects(models.Model):
+class CultureObject(models.Model):
     """
     Объекты культурного наследия.
     """
