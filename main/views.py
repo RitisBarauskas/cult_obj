@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -65,12 +66,16 @@ def show(request):
     """
     Показывает все объекты культурного наследия.
     """
-    objects = CultureObject.objects.all()[:10]
+    objects = CultureObject.objects.all()
+    display_obj = objects.count() // 15
+    paginator = Paginator(objects, display_obj)
+    page_number = request.GET.get("page")
+    page = paginator.get_page(page_number)
 
     return render(
         request,
         'objects/search_objects.html',
-        {'Objects': objects},
+        {"page": page, "paginator": paginator},
     )
 
 

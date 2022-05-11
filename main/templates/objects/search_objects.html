@@ -5,7 +5,7 @@
 		{% include "../includes/find_box.html" %}
 
 		<ul class="object_ul">
-  		{% for object in Objects %}
+  		{% for object in page %}
   		  <li class="object_li">
             <h3 class="object_name">
                 {{ object.name }}
@@ -41,6 +41,8 @@
              </ul>
    		 </li>
   		{% endfor %}
+        {% include '../includes/paginator.html' with item=page paginator=paginator %}
 		</ul>
+
 	</main>
 {% endblock %}

@@ -80,3 +80,26 @@
     border: darkgrey solid 1px;
     list-style: none;
 }
+
+.pagination_box {
+    margin: auto auto 40px;
+    display: flex;
+    max-width: 800px;
+}
+
+.pagination {
+    margin: auto;
+    max-width: 800px;
+    min-height: 50px;
+    background-color: darkgrey;
+}
+.page-item {
+    margin: 0;
+    padding: 0;
+}
+.page-item_big {
+    max-width: 50px;
+}
+.page-link {
+    margin: 0;
+}
