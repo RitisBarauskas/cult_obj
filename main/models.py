@@ -12,6 +12,9 @@ class District(models.Model):
         verbose_name = 'Район Москвы'
         verbose_name_plural = 'Районы Москвы'
 
+    def __str__(self):
+        return self.name
+
 
 class Category(models.Model):
     """
@@ -23,6 +26,9 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория объекта культурного наследия'
         verbose_name_plural = 'Категории объектов культурного наследия'
+
+    def __str__(self):
+        return self.name
 
 
 class TypeObject(models.Model):
@@ -36,6 +42,9 @@ class TypeObject(models.Model):
         verbose_name = 'Тип объекта культурного наследия'
         verbose_name_plural = 'Типы объектов культурного наследия'
 
+    def __str__(self):
+        return self.name
+
 
 class StatusObject(models.Model):
     """
@@ -47,6 +56,24 @@ class StatusObject(models.Model):
     class Meta:
         verbose_name = 'Категория объекта культурного наследия'
         verbose_name_plural = 'Категории объектов культурного наследия'
+
+    def __str__(self):
+        return self.name
+
+
+class AdmArea(models.Model):
+    """
+    Административный округ Москвы
+    """
+
+    name = models.CharField('Административный округ', max_length=255)
+
+    class Meta:
+        verbose_name = 'Административный округ'
+        verbose_name_plural = 'Административные округа'
+
+    def __str__(self):
+        return self.name
 
 
 class CultureObject(models.Model):
@@ -62,9 +89,11 @@ class CultureObject(models.Model):
         'Название объекта в документах',
         max_length=255,
     )
-    adm_area = models.CharField(
-        'Административный округ',
-        max_length=255,
+    adm_area = models.ForeignKey(
+        AdmArea,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
     )
     district = models.ForeignKey(
         District,

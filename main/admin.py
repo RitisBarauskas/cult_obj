@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from main.models import StatusObject, TypeObject, District, Category, \
-    CultureObject
+from main.models import (Category, CultureObject, District, StatusObject,
+                         TypeObject, AdmArea)
 
 
 @admin.register(CultureObject)
@@ -44,6 +44,15 @@ class TypeObjectAdmin(admin.ModelAdmin):
 class StatusObjectAdmin(admin.ModelAdmin):
     """
     Админ-панель статусов объектов культурного наследия
+    """
+
+    pass
+
+
+@admin.register(AdmArea)
+class AdmAreaAdmin(admin.ModelAdmin):
+    """
+    Админ-панель административных округов
     """
 
     pass
