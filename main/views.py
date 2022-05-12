@@ -19,12 +19,12 @@ def search_objects(request):
     """
     Метод отображения формы поиска.
     """
-    search_query = request.GET.get('q').split()
+    search_query = request.GET.get('q')
     if not search_query:
         return render(request, 'objects/index.html')
 
     query_filters = Q()
-    for word in search_query:
+    for word in search_query.split():
         query_filters |= (
                 Q(name__icontains=word) |
                 Q(ensemble_name_on_doc__icontains=word)
